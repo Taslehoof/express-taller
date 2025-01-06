@@ -1,10 +1,27 @@
 const express = require('express');
 const morgan = require('morgan')
+const path = require('path')
 
 const app = express();
 
+//settings
+app.set('appName', 'Express Course')
+app.set('port', 3020)
+app.set('case sensitive routing', true)
+
+//middlewares
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.get('/note.txt', (req, res) => {
+    res.send('este no es un archivo')
+})
+
+console.log(__dirname)
+
+//Routes statics
+app.use("/static",express.static(path.join(__dirname,'./static')))
+app.use("/public",express.static(path.join(__dirname,'./public')))
 
 //middleware
 //app.use((req, res, next) => {
@@ -13,6 +30,7 @@ app.use(morgan('dev'))
 //    next()
 //})
 
+//routes
 app.get('/profile', (req, res) => {
     console.log(req.body)
     res.send('profile page')
@@ -36,5 +54,5 @@ app.get('/dashboard', (req, res) => {
 })
 
 
-app.listen(3000);
-console.log(`Server on port ${3000}`);
+app.listen(app.get('port'));
+console.log(`Server ${app.get('appName')} on port ${app.get('port')}`);
