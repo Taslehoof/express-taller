@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-      "dev": "nodemon index6.js"
+    "dev": "nodemon index6.js"
   },
   "repository": {
     "type": "git",

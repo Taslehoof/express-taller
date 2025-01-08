@@ -10,6 +10,18 @@
     <h1>
         <%= title %>
     </h1>
+
+    <% if (isActive) { %>
+        <p>El servidor esta activo</p>
+    <% } else { %>
+        <p>El servidor esta inactivo</p>
+    <% } %>
+
+    <ul>
+        <%= for(let i = 0; i < users.lenght; i++) { %>
+        <li> <%= users[i].id %> <%= users[i].name %> <%= users[i].lastname %> </li>
+        <% } %>
+    </ul>
 </body>
 </html>
 
