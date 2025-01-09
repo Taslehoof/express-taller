@@ -1,7 +1,10 @@
 const express = require('express');
 const morgan = require('morgan')
 const path = require('path')
-const ejs = require('ejs')
+require('ejs')
+const connectDB = require('./db')
+
+connectDB()
 
 const app = express();
 
